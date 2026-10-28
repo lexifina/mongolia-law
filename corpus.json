@@ -1,0 +1,53 @@
+{
+  "corpus": "mn/national/acts",
+  "name": "Mongolia: the Constitution and the laws in force (legalinfo.mn)",
+  "label": "Mongolia",
+  "language": "mn",
+  "laws": {
+    "constitution": 1,
+    "laws": 951
+  },
+  "history": "current-only",
+  "history_from": "1991-01-22",
+  "record_to": "2026-10-28",
+  "checked_on": "2026-10-28",
+  "record_note": "legalinfo.mn publishes each law's current consolidated text, for a few laws the original text, and the list of amending acts, but no dated versions in between. So each law has its current text as published on 2026-10-28 (dated that day, authored by the publisher, with Amended-by: trailers), and, where the site has it or no amending act is listed, its original text on its own in-force date (authored by the law). The wording between the two is not published; tools/in_force_on.py warns (Unknown-from:).",
+  "built": "2026-10-28",
+  "baseline_trailer": "Consolidated",
+  "in_force_trailer": "In-force",
+  "has_future_branch": false,
+  "future_branch": "future",
+  "dates": {
+    "commit": "original: the law's own in-force date (\"дагаж мөрдөх огноо\"); current text: the retrieval day",
+    "baseline_trailer": "Consolidated",
+    "other_trailers": [
+      "Adopted",
+      "Amended-by",
+      "Unknown-from",
+      "Original-text"
+    ],
+    "time": "12:00 Asia/Ulaanbaatar (UTC+8; UTC+9 in the summers of 1983-1998, 2001-2006, 2015-2016)",
+    "before_1970": "clamped to 1970-01-01, one second apart"
+  },
+  "author": {
+    "original": "the law itself (title and adoption date), law-<id>@legalinfo-mn.invalid",
+    "consolidated": "Эрх зүйн мэдээллийн нэгдсэн систем (legalinfo.mn)",
+    "amendment": "none (no intermediate text published)",
+    "unexplained": "the publisher"
+  },
+  "scope": {
+    "trailer": "Applies",
+    "when_absent": "not extracted for Mongolia; the publisher's notes such as \"/... -ний өдрөөс эхлэн дагаж мөрдөнө/\" (applies from) stay in the text and are in data/amendments.csv",
+    "default_reach": {
+      "rule": "no retroactive application unless the law says so",
+      "meaning": "civil legislation is not applied retroactively except where a law provides otherwise; administrative normative acts likewise; laws making an infringement or offence harsher do not apply retroactively, milder ones do",
+      "authority": "Civil Code (Иргэний хууль) art. 5.1; General Administrative Law (Захиргааны ерөнхий хууль); Law on Infringements (Зөрчлийн тухай) art. 1.4; as published on legalinfo.mn",
+      "decided_here": false
+    }
+  },
+  "citation": {
+    "file": "(undsen-khuuli|huuli/[0-9]+)/zuil-([0-9]+(\\.[0-9]+)?)(-[0-9]+)?(~[0-9]+)?\\.md",
+    "cites": "(^|[^0-9.]){n} ?(дүгээр|дугаар) зүйл"
+  },
+  "tool": "tools/in_force_on.py"
+}
