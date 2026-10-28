@@ -8,7 +8,7 @@
 | Constitution | https://legalinfo.mn/mn/detail?lawId=367 | undsen-khuuli/ |
 | Copyright law | https://legalinfo.mn/mn/detail?lawId=16230812154721 | the legal basis below |
 
-Retrieved 2026-10-28. robots.txt: HTTP 404 (no rules). No terms of use found.
+Retrieved 2026-10-28. No terms of use found.
 
 ## Legal basis for reuse
 

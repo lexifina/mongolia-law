@@ -48,7 +48,7 @@ In PowerShell, `git show "main:undsen-khuuli/zuil-21.md"`. For dates, use `tools
 ## How it is checked
 
 check_repo.py: 952 laws and 979 versions read back from git and compared word for word with the site's HTML: 0 mismatches; 980 commits, 0 with unparseable trailers; tool samples 6/6 right. check_letters.py, which shares no code with build.py, compared the letters and digits of every version with the raw page: 979 versions, 0 mismatches.
-Rebuild: two builds from the same cache on 2026-10-28 gave the same law history, tip 2f43cabea64a800066310aa114f882af8bb4e3a5 (the commit before the documentation commit), and the same main hash when run with the same check results
+Rebuild: two builds from the same retrieved pages on 2026-10-28 gave the same law history, tip 2f43cabea64a800066310aa114f882af8bb4e3a5 (the commit before the documentation commit), and the same main hash when run with the same check results
 `scripts/global-law/check_corpus.py` passes.
 
 ## What "author" means
@@ -74,9 +74,9 @@ Rebuild: two builds from the same cache on 2026-10-28 gave the same law history,
 
 ## How it is built
 
-`scripts/mongolia-law/fetch.py` reads the site's list of laws in force and each law's page and amendment list;
-`build.py` splits the texts into articles and writes the history with one `git fast-import` stream; the same cache
-always gives the same hashes. See REPRODUCE.md. No AI model wrote or changed any legal text, and none runs at build time.
+The record uses the site's list of laws in force and each law's page and amendment list;
+`build.py` splits the texts into articles and writes the history with one `git fast-import` stream; the same retrieved
+pages always give the same hashes. See REPRODUCE.md. No AI model wrote or changed any legal text, and none runs at build time.
 
 ## Licence and source
 
