@@ -1,5 +1,7 @@
 # Mongolia: the Constitution and the laws in force, as git
 
+Part of [lexifina/global-law](https://github.com/lexifina/global-law), one git history for every country's law: this is Mongolia's national law, which global-law reads at `mongolia/national/acts/`.
+
 The Constitution of Mongolia and the 951 laws of Mongolia (Монгол Улсын хууль) that the Unified Legal
 Information System, [legalinfo.mn](https://legalinfo.mn), lists as in force, in Mongolian (Cyrillic), as published there
 on 2026-10-28. One folder per law, one file per article, one paragraph per line.
