@@ -24,7 +24,8 @@ The text is in Mongolian (Cyrillic), as legalinfo.mn publishes it. The site's En
 
 - **[Ask Claude about Mongolian law](https://global-law.lexifina.com/v1/try_claude?country=mongolia)**: opens Claude with a first question ready.
 - **[Ask ChatGPT](https://global-law.lexifina.com/v1/try_chatgpt?country=mongolia)**: the same question in ChatGPT.
-- **[Call the API in your browser](https://global-law.lexifina.com/v1/search_law?query=%D1%8D%D1%8D%D0%BB%D0%B6%D0%B8%D0%B9%D0%BD+%D0%B0%D0%BC%D1%80%D0%B0%D0%BB%D1%82&jurisdictions=mongolia)**: a search of Mongolian law for "ээлжийн амралт" (annual leave), returned as JSON. See the [documentation here](https://lexifina.com/api/global-law).
+- **[Search Mongolian law on our site](https://lexifina.com/law?country=mongolia&q=%D1%8D%D1%8D%D0%BB%D0%B6%D0%B8%D0%B9%D0%BD+%D0%B0%D0%BC%D1%80%D0%B0%D0%BB%D1%82)**: a search for "ээлжийн амралт" (annual leave), with each provision's text and its versions, no account needed.
+- **[Developer REST API](https://global-law.lexifina.com/v1/search_law?query=%D1%8D%D1%8D%D0%BB%D0%B6%D0%B8%D0%B9%D0%BD+%D0%B0%D0%BC%D1%80%D0%B0%D0%BB%D1%82&jurisdiction=mongolia)**: the same search as JSON, with no key. See the [documentation here](https://lexifina.com/api/global-law).
 
 Both assistants read the record through the free Global law connector (MCP, `https://global-law.lexifina.com/mcp`); the first time, the chat gives you the link that adds it. Ask in Mongolian or in English.
 
