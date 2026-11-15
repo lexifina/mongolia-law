@@ -4,6 +4,10 @@
     python tools/in_force_on.py 2000-01-01 undsen-khuuli zuil-21       # Constitution, art. 21, as recorded then
     python tools/in_force_on.py 2026-10-28 huuli/8928 zuil-4           # Anti-Corruption Law, art. 4
 
+A law's folder is <kind>/<year>/<lawId> since the layout move of 2026-11-10 (constitution/1992/367, law/2006/8928);
+its earlier name (undsen-khuuli, huuli/8928), listed in data/paths.json, is read as the same law, and its history
+before the move, under the earlier name, is read too.
+
 Reads the `In-force:` trailers (the real dates; commit dates before 1970 would be clamped) of `main`, first-parent
 only (the `future` branch is never read). legalinfo.mn keeps only a law's original text (for a few laws) and its
 current text, so:
@@ -13,6 +17,7 @@ current text, so:
   - otherwise there is no version for that date.
 Standard library only.
 """
+import json
 import subprocess
 import sys
 
@@ -21,16 +26,30 @@ def git(*args: str) -> str:
     return subprocess.run(['git', *args], capture_output=True, text=True, encoding='utf-8', check=True).stdout
 
 
-def history(path: str) -> list[tuple[str, str, str, str]]:
+def law_names(law: str) -> tuple[str, list[str]]:
+    """The law's folder now and every name it has had (data/paths.json maps each earlier name to its folder)."""
+    try:
+        paths = json.loads(git('show', 'main:data/paths.json')).get('paths', {})
+    except (subprocess.CalledProcessError, ValueError):
+        return law, [law]
+    now = paths.get(law, law)
+    return now, [now] + sorted(k for k, v in paths.items() if v == now and k != now)
+
+
+def history(*path: str) -> list[tuple[str, str, str, str]]:
     """(hash, in-force, kind, unknown-from) for every main commit touching path, newest first."""
     fmt = ('%H%x1f%(trailers:key=In-force,valueonly,separator=)%x1f%(trailers:key=Kind,valueonly,separator=)'
            '%x1f%(trailers:key=Unknown-from,valueonly,separator=)')
     out = []
-    for line in git('log', '--first-parent', f'--format={fmt}', 'main', '--', path).splitlines():
+    for line in git('log', '--first-parent', f'--format={fmt}', 'main', '--', *path).splitlines():
         h, d, kind, unknown = (line.split('\x1f') + ['', '', ''])[:4]
         if d.strip():
             out.append((h, d.strip(), kind.strip(), unknown.strip()))
     return out
+
+
+def git_ok(*args: str) -> bool:
+    return subprocess.run(['git', *args], capture_output=True).returncode == 0
 
 
 def main() -> None:
@@ -42,8 +61,8 @@ def main() -> None:
     unit = sys.argv[3] if len(sys.argv) > 3 else None
     if unit and unit.endswith('.md'):
         unit = unit[:-3]
-    path = f'{law}/{unit}.md' if unit else law
-    hist = history(law)
+    law, every = law_names(law)
+    hist = history(*every)
     if not hist:
         sys.exit(f'{law}: not found')
     pick = next((c for c in hist if c[1] <= day), None)
@@ -55,6 +74,9 @@ def main() -> None:
             sys.stderr.write(f'warning: {law} was amended by an act adopted {unknown}, on or before {day}; legalinfo.mn '
                              f'does not publish the wording in force on {day}. Shown: the {pick[2] or "recorded"} text '
                              f'in force from {pick[1]}; the current text is recorded from {d}.\n')
+    at = next((n for n in every if git_ok('cat-file', '-e', f'{pick[0]}:{n}')), law)  # the name it had then
+    law = at
+    path = f'{law}/{unit}.md' if unit else law
     if unit:
         try:
             sys.stdout.write(git('show', f'{pick[0]}:{path}'))

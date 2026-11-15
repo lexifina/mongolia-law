@@ -7,7 +7,7 @@ Part of [lexifina/global-law](https://github.com/lexifina/global-law), one git h
 
 **What is in it now:** the Constitution and the 951 laws that legalinfo.mn, the Unified Legal Information System, lists as in force, in 16,332 articles, with 979 texts: 544 as adopted (30 that the site publishes as the original text, and 514 laws with no amending act listed, whose current text is taken as the text as adopted) and 435 current texts of amended laws; 27 acts have both. [`laws.csv`](laws.csv) lists every law with its dates and its legalinfo.mn link, by its folder name before the move below.
 
-Each act is in `<kind>/<year>/<legalinfo.mn id>/`, by the year it was adopted, one file per article (`zuil-21.md`; article 19¹ is `zuil-19-1.md`) and the text before the first article in `ehlel.md`: `constitution/1992/367/` is the Constitution (МОНГОЛ УЛСЫН ҮНДСЭН ХУУЛЬ) and `law/2021/16230709635751/` the Labour Law (ХӨДӨЛМӨРИЙН ТУХАЙ, revised 2 July 2021). Until 2026-11-10 the folders were `undsen-khuuli/` and `huuli/<id>/`; [`data/paths.json`](data/paths.json) maps each old name to its folder. `git blame` and `git log --follow` follow a file across that move; `git log` without `--follow` and `tools/in_force_on.py` need the old name for earlier texts.
+Each act is in `<kind>/<year>/<legalinfo.mn id>/`, by the year it was adopted, one file per article (`zuil-21.md`; article 19¹ is `zuil-19-1.md`) and the text before the first article in `ehlel.md`: `constitution/1992/367/` is the Constitution (МОНГОЛ УЛСЫН ҮНДСЭН ХУУЛЬ) and `law/2021/16230709635751/` the Labour Law (ХӨДӨЛМӨРИЙН ТУХАЙ, revised 2 July 2021). Until 2026-11-10 the folders were `undsen-khuuli/` and `huuli/<id>/`; [`data/paths.json`](data/paths.json) maps each old name to its folder. `git blame` and `git log --follow` follow a file across that move; `git log` without `--follow` needs the old name for earlier texts; `tools/in_force_on.py` takes either name.
 
 The text is in Mongolian (Cyrillic), as legalinfo.mn publishes it. The site's English texts are not official and are not part of this record.
 
@@ -18,7 +18,7 @@ The text is in Mongolian (Cyrillic), as legalinfo.mn publishes it. The site's En
 | Every change to Article 21 of the Constitution | `git log -p --word-diff --follow -- constitution/1992/367/zuil-21.md` |
 | Which act wrote each line of Article 21? | `git blame constitution/1992/367/zuil-21.md` |
 | Every text of the Constitution held here, with its date | `git log --diff-filter=AMD --format="%h %(trailers:key=In-force,valueonly,separator=) %an" -- constitution/1992/367 undsen-khuuli` |
-| Article 21 as in force on 1 January 1995 | `python tools/in_force_on.py 1995-01-01 undsen-khuuli zuil-21` |
+| Article 21 as in force on 1 January 1995 | `python tools/in_force_on.py 1995-01-01 constitution/1992/367 zuil-21` |
 
 **Outside git**, we also host this record publicly, for free:
 
