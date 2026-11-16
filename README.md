@@ -1,35 +1,41 @@
-# Mongolia: law history in git
+# Монгол Улс: git дахь хууль тогтоомжийн түүх
 
+**Монгол** · [English](README.en.md)
 
-The law of Mongolia as a git history: one file per article, one commit per text, and the law or the publisher behind each text as the commit's author. legalinfo.mn publishes each law's current consolidated text and, for a few laws, the text as adopted, but no dated versions in between: a text as adopted is dated on the day it took effect and credited to the law; a current text is dated on the day it was read, 2026-10-28, and credited to the publisher. `git blame` names the law or the publisher behind every line; `git log` shows what changed between the two texts; picking a date gives the text held for that day, with a warning where the wording in force then is not published.
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="data/mn/effort-dark.svg">
+<img alt="Энэ репозитори дахь Монголын хууль тогтоомж: юу агуулж байгаа, хүчин төгөлдөр болсон оноор нь өөрчлөлтүүд, албан ёсны эх сурвалжтай харьцуулсан бүрэн байдал, агуулгын үнэн зөв байдал" src="data/mn/effort-light.svg" width="880">
+</picture>
 
-Part of [lexifina/global-law](https://github.com/lexifina/global-law), one git history for every country's law: this is Mongolia's national law, which global-law reads at `mongolia/national/acts/`.
+Монгол Улсын хууль тогтоомжийг git-ийн түүх хэлбэрээр: зүйл бүр нэг файл, эх бичвэр бүр нэг коммит, эх бичвэр бүрийн цаана байгаа хууль эсвэл нийтлэгч нь коммитын зохиогч (author). legalinfo.mn нь хууль бүрийн одоогийн нэгтгэсэн эх бичвэрийг, цөөн хэдэн хуулийн хувьд батлагдсан үеийн эх бичвэрийг нийтэлдэг боловч хоорондох огноотой хувилбаруудыг нийтэлдэггүй: батлагдсан үеийн эх бичвэрийг хүчин төгөлдөр болсон өдрөөр нь огноолж, хуульд нь хамааруулна; одоогийн эх бичвэрийг уншсан өдөр болох 2026-10-28-аар огноолж, нийтлэгчид хамааруулна. `git blame` мөр бүрийн цаана байгаа хууль эсвэл нийтлэгчийг заана; `git log` хоёр эх бичвэрийн хооронд юу өөрчлөгдсөнийг харуулна; огноо сонговол тухайн өдөрт хадгалагдсан эх бичвэрийг өгөх ба тэр үед хүчин төгөлдөр байсан найруулга нийтлэгдээгүй бол анхааруулга өгнө.
 
-**What is in it now:** the Constitution and the 951 laws that legalinfo.mn, the Unified Legal Information System, lists as in force, in 16,332 articles, with 979 texts: 544 as adopted (30 that the site publishes as the original text, and 514 laws with no amending act listed, whose current text is taken as the text as adopted) and 435 current texts of amended laws; 27 acts have both. [`laws.csv`](laws.csv) lists every law with its dates and its legalinfo.mn link, by its folder name before the move below.
+Энэ нь [lexifina/global-law](https://github.com/lexifina/global-law)-ийн нэг хэсэг бөгөөд бүх улсын хууль тогтоомжийг нэг git түүх болгосон: энд Монгол Улсын үндэсний хууль тогтоомж байгаа бөгөөд global-law үүнийг `mongolia/national/acts/`-аас уншина.
 
-Each act is in `<kind>/<year>/<legalinfo.mn id>/`, by the year it was adopted, one file per article (`zuil-21.md`; article 19¹ is `zuil-19-1.md`) and the text before the first article in `ehlel.md`: `constitution/1992/367/` is the Constitution (МОНГОЛ УЛСЫН ҮНДСЭН ХУУЛЬ) and `law/2021/16230709635751/` the Labour Law (ХӨДӨЛМӨРИЙН ТУХАЙ, revised 2 July 2021). Until 2026-11-10 the folders were `undsen-khuuli/` and `huuli/<id>/`; [`data/paths.json`](data/paths.json) maps each old name to its folder. `git blame` and `git log --follow` follow a file across that move; `git log` without `--follow` needs the old name for earlier texts; `tools/in_force_on.py` takes either name.
+**Одоо юу байгаа вэ:** Үндсэн хууль болон Эрх зүйн мэдээллийн нэгдсэн систем legalinfo.mn-д хүчин төгөлдөр гэж бүртгэгдсэн 951 хууль, нийт 16 332 зүйл, 979 эх бичвэртэй: батлагдсан үеийн 544 эх бичвэр (сайтын анхны эх бичвэр болгон нийтэлсэн 30, мөн нэмэлт, өөрчлөлт оруулсан хууль бүртгэгдээгүй тул одоогийн эх бичвэрийг нь батлагдсан үеийн эх бичвэр гэж үзсэн 514 хууль) болон нэмэлт, өөрчлөлт орсон хуулиудын одоогийн 435 эх бичвэр; 27 акт хоёулаа бий. [`laws.csv`](laws.csv) нь хууль бүрийг огноо болон legalinfo.mn-ийн холбоосын хамт доор дурдсан шилжүүлэлтээс өмнөх хавтасны нэрээр жагсаана.
 
-The text is in Mongolian (Cyrillic), as legalinfo.mn publishes it. The site's English texts are not official and are not part of this record.
+Акт бүр батлагдсан оноороо `<kind>/<year>/<legalinfo.mn id>/`-д байх ба зүйл бүр нэг файл (`zuil-21.md`; 19¹ дүгээр зүйл нь `zuil-19-1.md`), эхний зүйлээс өмнөх эх бичвэр `ehlel.md`-д байна: `constitution/1992/367/` нь Үндсэн хууль (МОНГОЛ УЛСЫН ҮНДСЭН ХУУЛЬ), `law/2021/16230709635751/` нь Хөдөлмөрийн тухай хууль (ХӨДӨЛМӨРИЙН ТУХАЙ, 2021 оны 7 дугаар сарын 2-ны шинэчилсэн найруулга). 2026-11-10 хүртэл хавтаснууд нь `undsen-khuuli/` болон `huuli/<id>/` байсан; [`data/paths.json`](data/paths.json) хуучин нэр бүрийг хавтастай нь харгалзуулна. `git blame` болон `git log --follow` нь тэр шилжүүлэлтийг дамжин файлыг мөшгинө; `--follow`-гүй `git log` нь өмнөх эх бичвэрүүдэд хуучин нэрийг шаардана; `tools/in_force_on.py` аль ч нэрийг хүлээн авна.
 
-## Questions as git commands
+Эх бичвэр нь legalinfo.mn-ийн нийтэлсэн ёсоор монгол хэлээр (кирилл үсгээр) байна. Сайтын англи эх бичвэрүүд албан ёсны биш бөгөөд энэ бүртгэлд ороогүй.
 
-| Question | Command |
+## git тушаалаар хариулах асуултууд
+
+| Асуулт | Тушаал |
 | --- | --- |
-| Every change to Article 21 of the Constitution | `git log -p --word-diff --follow -- constitution/1992/367/zuil-21.md` |
-| Which act wrote each line of Article 21? | `git blame constitution/1992/367/zuil-21.md` |
-| Every text of the Constitution held here, with its date | `git log --diff-filter=AMD --format="%h %(trailers:key=In-force,valueonly,separator=) %an" -- constitution/1992/367 undsen-khuuli` |
-| Article 21 as in force on 1 January 1995 | `python tools/in_force_on.py 1995-01-01 constitution/1992/367 zuil-21` |
+| Үндсэн хуулийн 21 дүгээр зүйлийн бүх өөрчлөлт | `git log -p --word-diff --follow -- constitution/1992/367/zuil-21.md` |
+| 21 дүгээр зүйлийн мөр бүрийг аль акт бичсэн бэ? | `git blame constitution/1992/367/zuil-21.md` |
+| Энд хадгалагдсан Үндсэн хуулийн бүх эх бичвэр, огноотой нь | `git log --diff-filter=AMD --format="%h %(trailers:key=In-force,valueonly,separator=) %an" -- constitution/1992/367 undsen-khuuli` |
+| 1995 оны 1 дүгээр сарын 1-нд хүчин төгөлдөр байсан 21 дүгээр зүйл | `python tools/in_force_on.py 1995-01-01 constitution/1992/367 zuil-21` |
 
-**Outside git**, we also host this record publicly, for free:
+**git-ээс гадна** бид энэ бүртгэлийг олон нийтэд үнэ төлбөргүй нээлттэй байршуулдаг:
 
-- **[Ask Claude about Mongolian law](https://global-law.lexifina.com/v1/try_claude?country=mongolia)**: opens Claude with a first question ready.
-- **[Ask ChatGPT](https://global-law.lexifina.com/v1/try_chatgpt?country=mongolia)**: the same question in ChatGPT.
-- **[Search Mongolian law on our site](https://lexifina.com/law?country=mongolia&q=%D1%8D%D1%8D%D0%BB%D0%B6%D0%B8%D0%B9%D0%BD+%D0%B0%D0%BC%D1%80%D0%B0%D0%BB%D1%82)**: a search for "ээлжийн амралт" (annual leave), with each provision's text and its versions, no account needed.
-- **[Developer REST API](https://global-law.lexifina.com/v1/search_law?query=%D1%8D%D1%8D%D0%BB%D0%B6%D0%B8%D0%B9%D0%BD+%D0%B0%D0%BC%D1%80%D0%B0%D0%BB%D1%82&jurisdiction=mongolia)**: the same search as JSON, with no key. See the [documentation here](https://lexifina.com/api/global-law).
+- **[Монголын хууль тогтоомжийн талаар Claude-аас асуух](https://global-law.lexifina.com/v1/try_claude?country=mongolia)**: эхний асуулт бэлэн болсон Claude-ыг нээнэ.
+- **[ChatGPT-ээс асуух](https://global-law.lexifina.com/v1/try_chatgpt?country=mongolia)**: ижил асуултыг ChatGPT-д.
+- **[Манай сайтаас Монголын хууль тогтоомж хайх](https://lexifina.com/law?country=mongolia&q=%D1%8D%D1%8D%D0%BB%D0%B6%D0%B8%D0%B9%D0%BD+%D0%B0%D0%BC%D1%80%D0%B0%D0%BB%D1%82)**: "ээлжийн амралт" гэсэн хайлт, заалт бүрийн эх бичвэр болон түүний хувилбаруудын хамт, бүртгэл шаардлагагүй.
+- **[Хөгжүүлэгчийн REST API](https://global-law.lexifina.com/v1/search_law?query=%D1%8D%D1%8D%D0%BB%D0%B6%D0%B8%D0%B9%D0%BD+%D0%B0%D0%BC%D1%80%D0%B0%D0%BB%D1%82&jurisdiction=mongolia)**: ижил хайлтыг JSON хэлбэрээр, түлхүүргүйгээр. [Баримт бичгийг эндээс](https://lexifina.com/api/global-law) үзнэ үү.
 
-Both assistants read the record through the free Global law connector (MCP, `https://global-law.lexifina.com/mcp`); the first time, the chat gives you the link that adds it. Ask in Mongolian or in English.
+Хоёр туслах хоёулаа энэ бүртгэлийг үнэ төлбөргүй Global law холбогчоор (MCP, `https://global-law.lexifina.com/mcp`) уншина; анх удаа ашиглахад чат түүнийг нэмэх холбоосыг өгнө. Монгол эсвэл англи хэлээр асууж болно.
 
-**Host it yourself easily.** All it takes is git and Python, and the tools run on your machine:
+**Өөрөө хялбархан байршуулах.** Зөвхөн git болон Python хэрэгтэй бөгөөд хэрэгслүүд таны компьютер дээр ажиллана:
 
 ```sh
 git clone --depth 1 https://github.com/lexifina/global-law && cd global-law
@@ -37,52 +43,54 @@ python3 tools/countries.py add mongolia/national/acts
 python3 tools/law.py show 2026-11-01 mongolia/national/acts/constitution/1992/367/zuil-21.md
 ```
 
-Opened in Claude Code, Cursor, VS Code or Codex, the clone also starts a local MCP server with the same tools ([MCP.md](https://github.com/lexifina/global-law/blob/main/MCP.md)).
+Claude Code, Cursor, VS Code эсвэл Codex-д нээхэд энэ клон нь ижил хэрэгслүүдтэй орон нутгийн MCP серверийг мөн эхлүүлнэ ([MCP.md](https://github.com/lexifina/global-law/blob/main/MCP.md)).
 
-## Dates
+## Огноо
 
-Each commit is dated at noon, Asia/Ulaanbaatar, and carries its day in its `In-force:` trailer:
+Коммит бүрийг үд дунд (Asia/Ulaanbaatar) огноолж, өдрийг нь `In-force:` трейлерт тэмдэглэнэ:
 
-- for a text as adopted, the law's own in-force date on legalinfo.mn ("дагаж мөрдөх огноо"); where the site gives none, the adoption date, and `Evidence:` says so. The Constitution is in force from 12 February 1992 (its Article 70.2);
-- for a current text, the day it was read as in force, 2026-10-28 (`Consolidated:`), not the day it took effect. `Amended-by:` lists each amending act with its adoption date, and `Unknown-from:` gives the first of them, from which the earlier text may no longer be the law;
-- ask for a date with `tools/in_force_on.py`, which reads `In-force:` and warns when the wording in force on that day is not published.
+- батлагдсан үеийн эх бичвэрийн хувьд legalinfo.mn дээрх тухайн хуулийн өөрийн хүчин төгөлдөр болох огноо ("дагаж мөрдөх огноо"); сайт үүнийг өгөөгүй бол батлагдсан огноо бөгөөд `Evidence:` үүнийг тэмдэглэнэ. Үндсэн хууль 1992 оны 2 дугаар сарын 12-ноос хүчин төгөлдөр (түүний 70.2 дугаар зүйл);
+- одоогийн эх бичвэрийн хувьд хүчин төгөлдөр гэж уншсан өдөр болох 2026-10-28 (`Consolidated:`), хүчин төгөлдөр болсон өдөр биш. `Amended-by:` нэмэлт, өөрчлөлт оруулсан акт бүрийг батлагдсан огноотой нь жагсааж, `Unknown-from:` тэдгээрийн эхнийхийг өгнө; тэр өдрөөс эхлэн өмнөх эх бичвэр хууль байхаа больсон байж болзошгүй;
+- огноогоор асуухдаа `tools/in_force_on.py`-г ашиглана уу; энэ нь `In-force:`-ийг уншиж, тухайн өдөр хүчин төгөлдөр байсан найруулга нийтлэгдээгүй бол анхааруулна.
 
-A text as adopted is credited to the law itself, by its title and adoption date. A current text is credited to the publisher, Эрх зүйн мэдээллийн нэгдсэн систем (legalinfo.mn), because the site does not say which amending act wrote which words; `git blame` names the publisher on those lines.
+Батлагдсан үеийн эх бичвэрийг нэр, батлагдсан огноогоор нь тухайн хуульд өөрт нь хамааруулна. Одоогийн эх бичвэрийг нийтлэгч болох Эрх зүйн мэдээллийн нэгдсэн систем (legalinfo.mn)-д хамааруулна, учир нь аль нэмэлт, өөрчлөлт оруулсан акт аль үгийг бичсэнийг сайт заадаггүй; эдгээр мөр дээр `git blame` нийтлэгчийг заана.
 
-## How it is checked
+## Хэрхэн шалгадаг вэ
 
-- `tools/build/check_repo.py` reads all 952 acts and 979 texts back from git and compares them word for word with the site's pages: 0 mismatches, and every commit's trailers parse.
-- `tools/build/check_letters.py`, which shares no code with the builder, compares the letters and digits of every text with the raw page: 0 mismatches.
-- Two builds from the same retrieved pages gave the same history; the sha256 of every retrieved page is in [`data/source-sha256.tsv`](data/source-sha256.tsv) (see [`REPRODUCE.md`](REPRODUCE.md)).
-- The layout move of 2026-11-10 renamed folders only; no text changed.
+- `tools/build/check_repo.py` нь 952 акт болон 979 эх бичвэрийг бүгдийг git-ээс буцааж уншиж, сайтын хуудсуудтай үг үгээр нь харьцуулдаг: зөрүү 0, коммит бүрийн трейлер задлагдана.
+- Бүтээгчтэй ямар ч код хуваалцдаггүй `tools/build/check_letters.py` нь эх бичвэр бүрийн үсэг, цифрийг түүхий хуудастай харьцуулдаг: зөрүү 0.
+- Татаж авсан ижил хуудсуудаас хоёр удаа бүтээхэд ижил түүх гарсан; татаж авсан хуудас бүрийн sha256 нь [`data/source-sha256.tsv`](data/source-sha256.tsv)-д байна ([`REPRODUCE.md`](REPRODUCE.md)-г үзнэ үү).
+- 2026-11-10-ны бүтцийн шилжүүлэлт зөвхөн хавтасны нэрийг өөрчилсөн; ямар ч эх бичвэр өөрчлөгдөөгүй.
 
-## What it does not show
+## Юуг харуулдаггүй вэ
 
-- **The wording between the original and the current text.** legalinfo.mn does not publish it, and the amending acts were not replayed: 408 amended laws have their current text only.
-- **Which amending act wrote which words** in a current text. The 3,285 amending acts are in `Amended-by:` and [`data/amending-acts.csv`](data/amending-acts.csv), and the publisher's 22,643 per-provision notes in [`data/amendments.csv`](data/amendments.csv).
-- **Which words apply later.** A current text includes provisions not yet applicable, with the publisher's note in the text ("... -ний өдрөөс эхлэн дагаж мөрдөнө", applies from; kind `applies-from` in `data/amendments.csv`).
-- **Annexes** (the "Хавсралт" tab, 30 laws); tables in the text are kept, one row per line.
-- **Repealed laws**, international treaties, resolutions of the State Great Khural, decrees and regulations.
+- **Анхны болон одоогийн эх бичвэрийн хоорондох найруулга.** legalinfo.mn үүнийг нийтэлдэггүй бөгөөд нэмэлт, өөрчлөлт оруулсан актуудыг дахин хэрэглээгүй: нэмэлт, өөрчлөлт орсон 408 хуулийн зөвхөн одоогийн эх бичвэр байна.
+- Одоогийн эх бичвэрт **аль нэмэлт, өөрчлөлт оруулсан акт аль үгийг бичсэн.** Нэмэлт, өөрчлөлт оруулсан 3 285 акт `Amended-by:` болон [`data/amending-acts.csv`](data/amending-acts.csv)-д, нийтлэгчийн заалт тус бүрийн 22 643 тэмдэглэл [`data/amendments.csv`](data/amendments.csv)-д байна.
+- **Аль үгс хожим мөрдөгдөх.** Одоогийн эх бичвэрт хараахан мөрдөгдөөгүй заалтууд нийтлэгчийн тэмдэглэлийн хамт эх бичвэрт орсон байна ("... -ний өдрөөс эхлэн дагаж мөрдөнө"; `data/amendments.csv` дахь төрөл нь `applies-from`).
+- **Хавсралтууд** ("Хавсралт" таб, 30 хууль); эх бичвэр доторх хүснэгтүүдийг мөр бүрийг нэг мөрөнд байлгаж хадгалсан.
+- **Хүчингүй болсон хуулиуд**, олон улсын гэрээ, Улсын Их Хурлын тогтоол, зарлиг болон журам.
 
-## Sources
+## Эх сурвалж
 
-| Source | Kind | Past versions | Notes |
+| Эх сурвалж | Төрөл | Өмнөх хувилбарууд | Тэмдэглэл |
 | --- | --- | --- | --- |
-| [legalinfo.mn](https://legalinfo.mn) (Хууль зүйн үндэсний хүрээлэн) | Unified Legal Information System (Эрх зүйн мэдээллийн нэгдсэн систем) | no: the current text, and the original text for 30 laws | The list of laws in force with their adoption and in-force dates, each law's page and its amending acts; retrieved 2026-10-28 ([`SOURCES.md`](SOURCES.md)) |
+| [legalinfo.mn](https://legalinfo.mn) (Хууль зүйн үндэсний хүрээлэн) | Эрх зүйн мэдээллийн нэгдсэн систем | үгүй: одоогийн эх бичвэр, 30 хуулийн хувьд анхны эх бичвэр | Хүчин төгөлдөр хуулиудын жагсаалт батлагдсан болон хүчин төгөлдөр болох огнооны хамт, хууль бүрийн хуудас болон түүнд нэмэлт, өөрчлөлт оруулсан актууд; 2026-10-28-нд татаж авсан ([`SOURCES.md`](SOURCES.md)) |
 
-## Licence
+## Лиценз
 
-See [`LICENSE`](LICENSE). Under Article 7.1.1 of the Law of Mongolia on Copyright (revised, 6 May 2021), laws, administrative normative acts and other legal acts are not protected by copyright. The layout, commit history, data files and tools are Lexifina's and are CC0 1.0.
+[`LICENSE`](LICENSE)-ийг үзнэ үү. Зохиогчийн эрх болон түүнд хамаарах эрхийн тухай Монгол Улсын хуулийн (шинэчилсэн найруулга, 2021 оны 5 дугаар сарын 6) 7.1.1-д зааснаар хууль, захиргааны хэм хэмжээний акт болон бусад эрх зүйн акт зохиогчийн эрхээр хамгаалагдахгүй. Бүтэц, коммитын түүх, өгөгдлийн файлууд болон хэрэгслүүд нь Lexifina-гийнх бөгөөд CC0 1.0 лицензтэй.
 
-No AI model wrote, translated or changed legal text, and none runs at fetch or build time; the scripts and documents were written by an AI model (see [`REPRODUCE.md`](REPRODUCE.md)).
+Ямар ч хиймэл оюуны загвар хуулийн эх бичвэрийг бичээгүй, орчуулаагүй, өөрчлөөгүй бөгөөд татах эсвэл бүтээх үед ямар ч загвар ажилладаггүй; скрипт болон баримт бичгийг хиймэл оюуны загвар бичсэн ([`REPRODUCE.md`](REPRODUCE.md)-г үзнэ үү).
 
-## More
+Энэ текст нь англи хувилбарын ([README.en.md](README.en.md)) орчуулга юм; зөрүүтэй бол англи хувилбарыг баримтална.
 
-From [lexifina/global-law](https://github.com/lexifina/global-law):
+## Дэлгэрэнгүй
 
-- [FEATURES.md](https://github.com/lexifina/global-law/blob/main/FEATURES.md): every feature, and what every corpus must support (`git blame`, `law.py`, the MCP tools)
-- [FAQ.md](https://github.com/lexifina/global-law/blob/main/FAQ.md): questions and answers · [CONTRIBUTING.md](https://github.com/lexifina/global-law/blob/main/CONTRIBUTING.md): proposing changes · [MCP.md](https://github.com/lexifina/global-law/blob/main/MCP.md): the MCP server · [REPRODUCE.md](https://github.com/lexifina/global-law/blob/main/REPRODUCE.md): how it was built · [CHANGELOG.md](https://github.com/lexifina/global-law/blob/main/CHANGELOG.md)
-- [FRESHNESS.md](https://github.com/lexifina/global-law/blob/main/FRESHNESS.md): how current each corpus is · [Monitoring](https://github.com/lexifina/global-law/tree/main/monitoring): whether updates are running · [WATCHING.md](https://github.com/lexifina/global-law/blob/main/WATCHING.md): how each official source is watched for changes
-- [performance/](https://github.com/lexifina/global-law/tree/main/performance): how fast the tools are, measured
-- [visualisations/](https://github.com/lexifina/global-law/tree/main/visualisations): charts and bridges across the world's law
-- [Vulnerabilities](https://github.com/lexifina/global-law/tree/main/vulnerabilities): mistakes in legislation as published
+[lexifina/global-law](https://github.com/lexifina/global-law) репозиториос (англи хэл дээрх хуудсууд):
+
+- [FEATURES.md](https://github.com/lexifina/global-law/blob/main/FEATURES.md): бүх боломж, корпус бүрийн дэмжих ёстой зүйлс (`git blame`, `law.py`, MCP хэрэгслүүд)
+- [FAQ.md](https://github.com/lexifina/global-law/blob/main/FAQ.md): асуулт, хариулт · [CONTRIBUTING.md](https://github.com/lexifina/global-law/blob/main/CONTRIBUTING.md): өөрчлөлт санал болгох · [MCP.md](https://github.com/lexifina/global-law/blob/main/MCP.md): MCP сервер · [REPRODUCE.md](https://github.com/lexifina/global-law/blob/main/REPRODUCE.md): хэрхэн бүтээсэн · [CHANGELOG.md](https://github.com/lexifina/global-law/blob/main/CHANGELOG.md)
+- [FRESHNESS.md](https://github.com/lexifina/global-law/blob/main/FRESHNESS.md): корпус бүр хэр шинэчлэгдсэн · [Хяналт](https://github.com/lexifina/global-law/tree/main/monitoring): шинэчлэлт ажиллаж байгаа эсэх · [WATCHING.md](https://github.com/lexifina/global-law/blob/main/WATCHING.md): албан ёсны эх сурвалж бүрийн өөрчлөлтийг хэрхэн хянадаг
+- [performance/](https://github.com/lexifina/global-law/tree/main/performance): хэрэгслүүдийн хэмжсэн хурд
+- [visualisations/](https://github.com/lexifina/global-law/tree/main/visualisations): дэлхийн хууль эрх зүйг хамарсан график ба холбоосууд
+- [Сул талууд](https://github.com/lexifina/global-law/tree/main/vulnerabilities): нийтлэгдсэн хэлбэрээрээ хууль тогтоомжид буй алдаа
