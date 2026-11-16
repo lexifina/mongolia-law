@@ -85,6 +85,10 @@ Claude Code, Cursor, VS Code эсвэл Codex-д нээхэд энэ клон н
 
 Энэ текст нь англи хувилбарын ([README.en.md](README.en.md)) орчуулга юм; зөрүүтэй бол англи хувилбарыг баримтална.
 
+## Дүрслэл
+
+- [visualisations/](visualisations/): энэ санд үндэслэн зурсан график. Хараахан зураагүй.
+
 ## Дэлгэрэнгүй
 
 [lexifina/global-law](https://github.com/lexifina/global-law) репозиториос (англи хэл дээрх хуудсууд):

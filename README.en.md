@@ -83,6 +83,10 @@ See [`LICENSE`](LICENSE). Under Article 7.1.1 of the Law of Mongolia on Copyrigh
 
 No AI model wrote, translated or changed legal text, and none runs at fetch or build time; the scripts and documents were written by an AI model (see [`REPRODUCE.md`](REPRODUCE.md)).
 
+## Visualisations
+
+- [visualisations/](visualisations/README.en.md): charts drawn from this repository. Not drawn yet.
+
 ## More
 
 From [lexifina/global-law](https://github.com/lexifina/global-law):
