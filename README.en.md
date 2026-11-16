@@ -61,6 +61,7 @@ A text as adopted is credited to the law itself, by its title and adoption date.
 - `tools/build/check_letters.py`, which shares no code with the builder, compares the letters and digits of every text with the raw page: 0 mismatches.
 - Two builds from the same retrieved pages gave the same history; the sha256 of every retrieved page is in [`data/source-sha256.tsv`](data/source-sha256.tsv) (see [`REPRODUCE.md`](REPRODUCE.md)).
 - The layout move of 2026-11-10 renamed folders only; no text changed.
+- [vulnerabilities/](vulnerabilities/README.en.md): possible drafting mistakes in Mongolian law, found by global-law's detectors and checked by hand.
 
 ## What it does not show
 
